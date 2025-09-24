@@ -20,7 +20,7 @@ const BookingItem = () => {
         {/*DIREITA*/}
         <div className="flex flex-col items-center gap-1 border-l-1 border-solid border-gray-200 pl-4">
           <p className="text-sm font-semibold">Setembro</p>
-          <p className="text-3xl">24</p>
+          <p className="text-3xl font-bold">24</p>
           <p className="text-sm font-semibold">14:00</p>
         </div>
       </CardContent>

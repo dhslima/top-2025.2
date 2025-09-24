@@ -1,21 +1,23 @@
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { MenuIcon, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 
 import Header from "./_components/header";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import BookingItem from "./_components/booking-item";
 
-export default function Home() {
+import { db } from "./_lib/prisma";
+import BarbershopItem from "./_components/barbershop-item";
+
+export default async function Home() {
+  const barbershops = await db.barbershop.findMany();
+
+  const barbershopsInv = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  });
+
   return (
     <div>
       {/*Cabeçalho*/}
@@ -48,7 +50,24 @@ export default function Home() {
       </h3>
       <BookingItem />
       {/*Recomendados*/}
+      {/*Agendamentos*/}
+      <h3 className="p-5 text-sm font-semibold text-gray-400 uppercase">
+        Recomendados
+      </h3>
+      <div className="flex flex-row gap-2 overflow-auto">
+        {barbershops.map((item) => (
+          <BarbershopItem key={item.id} barbershop={item} />
+        ))}
+      </div>
       {/*Populares*/}
+      <h3 className="p-5 text-sm font-semibold text-gray-400 uppercase">
+        Populares
+      </h3>
+      <div className="flex flex-row gap-2 overflow-auto">
+        {barbershopsInv.map((item) => (
+          <BarbershopItem key={item.id} barbershop={item} />
+        ))}
+      </div>
     </div>
   );
 }
