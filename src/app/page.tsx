@@ -1,10 +1,33 @@
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { MenuIcon } from "lucide-react";
+
+import Header from "./_components/header";
 
 export default function Home() {
   return (
-    <div className="mb-8 border-4 border-solid border-blue-500 p-6 pl-10">
-      <h1 className="bg-black text-red-500">Home page</h1>
-      <Button>Click me</Button>
+    <div>
+      {/*Cabeçalho*/}
+      <Header />
+      {/*Texto inicial*/}
+      <div>
+        <p>Olá, David!</p>
+        <p>Quarta-feira, 24 de setembro de 2025</p>
+      </div>
+      {/*Buscar*/}
+      {/*Busca rápida*/}
+      {/*Banner*/}
+      {/*Agendamentos*/}
+      {/*Recomendados*/}
+      {/*Populares*/}
     </div>
   );
 }
