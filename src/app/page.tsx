@@ -18,9 +18,9 @@ export default function Home() {
       {/*Cabeçalho*/}
       <Header />
       {/*Texto inicial*/}
-      <div>
-        <p>Olá, David!</p>
-        <p>Quarta-feira, 24 de setembro de 2025</p>
+      <div className="p-5">
+        <p className="text-xl font-bold">Olá, David!</p>
+        <p className="text-sm">Quarta-feira, 24 de setembro de 2025</p>
       </div>
       {/*Buscar*/}
       {/*Busca rápida*/}
