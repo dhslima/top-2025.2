@@ -1,13 +1,7 @@
 import ServiceItem from "@/app/_components/service-item";
 import { db } from "@/app/_lib/prisma";
 import { Button } from "@/components/ui/button";
-import {
-  ChevronLeft,
-  LocateIcon,
-  MapPin,
-  MenuIcon,
-  StarIcon,
-} from "lucide-react";
+import { ChevronLeft, MapPin, MenuIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
