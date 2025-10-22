@@ -1,5 +1,5 @@
 import { db } from "@/app/_lib/prisma";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 interface BarbershopPageProps {
   params: {
@@ -15,7 +15,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
   });
 
   if (!barbershop) {
-    return notFound();
+    redirect("/");
   }
 
   return (
