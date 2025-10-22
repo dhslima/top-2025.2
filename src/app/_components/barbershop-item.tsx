@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Barbershop } from "@/generated/prisma";
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface BarbershopItemProps {
   barbershop: Barbershop;
@@ -20,15 +21,22 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
             fill
             className="object-cover"
           />
-          <Badge className="absolute top-2 left-2 flex flex-row items-center gap-1">
-            <StarIcon size={12} className="fill-primary" />
+          <Badge
+            className="absolute top-2 left-2 flex flex-row items-center gap-1"
+            variant={"secondary"}
+          >
+            <StarIcon size={12} className="fill-primary text-primary" />
             <span className="text-xs font-semibold">5.0</span>
           </Badge>
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="truncate text-xl font-bold">{barbershop.name}</p>
           <p className="truncate font-semibold">{barbershop.address}</p>
-          <Button variant={"outline"}>Reservar</Button>
+          <Link href={`barbershops/${barbershop.id}`} className="w-full">
+            <Button variant={"outline"} className="w-full">
+              Reservar
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
