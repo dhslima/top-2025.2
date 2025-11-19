@@ -8,6 +8,7 @@ import BookingItem from "./_components/booking-item";
 
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
+import { QUICK_SEARCH_ITEMS } from "@/_constants/search";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany();
@@ -38,7 +39,15 @@ export default async function Home() {
       </div>
 
       {/*Busca rápida*/}
-
+      <div className="mt-6 flex flex-row items-center gap-2 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
+        {/*Mapeamento dos itens de busca rápida*/}
+        {QUICK_SEARCH_ITEMS.map((item) => (
+          <Button key={item.label} className="gap-2" variant={"secondary"}>
+            <Image src={item.icon} alt={item.label} width={16} height={16} />
+            {item.label}
+          </Button>
+        ))}
+      </div>
       {/*Banner*/}
       <div className="relative mt-6 h-[150px] w-full p-5">
         <Image
