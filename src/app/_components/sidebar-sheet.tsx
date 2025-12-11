@@ -19,13 +19,7 @@ import {
 } from "@/components/ui/sheet";
 import { authClient } from "@/lib/auth-client";
 
-import {
-  Calendar1Icon,
-  HomeIcon,
-  LogInIcon,
-  LogOutIcon,
-  Sheet,
-} from "lucide-react";
+import { Calendar1Icon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -109,9 +103,11 @@ const SidebarSheet = () => {
             </Button>
           </SheetClose>
 
-          <Button variant={"outline"} className="justify-start">
-            <Calendar1Icon />
-            Agendamentos
+          <Button variant={"outline"} className="justify-start" asChild>
+            <Link href={"/bookings"}>
+              <Calendar1Icon />
+              Agendamentos
+            </Link>
           </Button>
         </div>
 
@@ -127,12 +123,14 @@ const SidebarSheet = () => {
             </Button>
           ))}
         </div>
-        <SheetClose asChild>
-          <Button variant={"outline"} onClick={handleLogout}>
-            <LogOutIcon />
-            Sair
-          </Button>
-        </SheetClose>
+        {data?.user && (
+          <SheetClose asChild>
+            <Button variant={"outline"} onClick={handleLogout}>
+              <LogOutIcon />
+              Sair
+            </Button>
+          </SheetClose>
+        )}
       </SheetContent>
     </div>
   );

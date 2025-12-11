@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Service } from "@/generated/prisma";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { Barbershop, Service } from "@/generated/prisma";
 import Image from "next/image";
+import ReservationSheet from "./reservation-sheet";
 
 interface ServiceItemProps {
   service: Service;
+  barbershop: Pick<Barbershop, "name">;
 }
 
-const ServiceItem = ({ service }: ServiceItemProps) => {
+const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   return (
     <Card className="rounded">
       <CardContent className="flex flex-row items-center gap-4">
@@ -30,7 +33,17 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
                 currency: "BRL",
               })}
             </span>
-            <Button variant={"outline"}>Reservar</Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant={"outline"}>Reservar</Button>
+              </SheetTrigger>
+              <ReservationSheet
+                name={service.name}
+                price={service.price.toNumber()}
+                barbershop={barbershop.name}
+                serviceId={service.id}
+              />
+            </Sheet>
           </div>
         </div>
       </CardContent>

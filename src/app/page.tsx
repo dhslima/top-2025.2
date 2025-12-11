@@ -9,6 +9,8 @@ import BookingItem from "./_components/booking-item";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
 import { QUICK_SEARCH_ITEMS } from "@/_constants/search";
+import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany();
